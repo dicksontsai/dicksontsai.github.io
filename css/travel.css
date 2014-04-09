@@ -127,7 +127,7 @@ body {
 }
 
 #content a {
-	text-decoration: none;
+	text-decoration: underline;
 	color: #2a96bc;
 }
 
@@ -138,13 +138,28 @@ body {
 #titleline {
 	font-size: 62pt;
 	padding-right: 5px;
-	color: #ff0000;
-	padding-left: 340px;
+	color: gold;
+	padding-left: 20px;
+}
+
+#tagline {
+	font-size: 16pt;
+	color: #6AD3Ef;
+}
+
+#jobline {
+	font-size: 16pt;
+	color: #4D4D4D;
+}
+
+#divider {
+	font-size: 16pt;
+	color: #000000;
 }
 
 
 header {
-	background-image: url("../assets/projects.png");
+	background-image: url("../assets/castle.jpg");
 	margin-top: 0px;
 	border-top: 0px;
 	padding-top: 0px;
