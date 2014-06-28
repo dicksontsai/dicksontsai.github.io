@@ -198,6 +198,32 @@ header {
 	color: #1D7E21;
 }
 
+#navbar-container {
+    width: 100%;
+    border-top: solid 1px gray;
+    border-bottom: solid 1px gray;
+    
+}
+
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li {
+    display: inline;
+}
+
+#content a.navbar-link {
+    text-decoration: none;
+    font-size: 14pt;
+	color: #35BCE0;
+    padding: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
 /* content END */
 
 /* text styles */
