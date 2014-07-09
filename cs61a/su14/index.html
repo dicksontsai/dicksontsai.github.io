@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS 61A Summer 2014: Structure and Interpretation of Computer Programs</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <style>
+table, iframe {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+} 
+
+iframe {
+    display: block;
+}
+thead {
+  font-variant: small-caps;
+  background: #0b5394;
+  color: #fff;
+}
+
+thead th {
+  padding: 5px;
+  text-align: center;
+}
+
+
+td {
+  line-height: 1.5;
+  border: 1px solid #d4d4d4;
+  text-align: center;
+  vertical-align: middle;
+  padding: 4pt;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="#top">home</a>
+  <a href="about.html">course info</a>
+  <a href="staff.html">staff</a>
+  <a href="index.html#calendar">schedule</a>
+  <!--  <a href="http://chat.cs61a.org" target="_blank">chat</a> -->
+  <a href="https://piazza.com/berkeley/summer2014/cs61a/home" target="_blank">piazza</a>
+  <a href="http://ocf.berkeley.edu/~shidi/cs61a/w" target="_blank">wiki</a>
+  <a href="feedback.html">feedback</a></li>
+</nav>
+
+<header id="top">
+  <h1>CS 61A</h1>
+  <h2>Structure and Interpretation of Computer Programs
+      <span>summer 2014</span></h2>
+</header>
+
+<main>
+
+<!--<section id="news" class="box">
+  <h1>Annoucements</h1>
+  <article>
+    <time datetime="2014-6-23">Jun 23</time>
+    <p>Welcome to CS 61A! :D</p>
+    <p>First day of lectures and labs. No discussions today.</p>
+  </article>
+  </section>-->
+
+<table>
+  <thead>
+    <tr>
+      <th>week</th>
+      <th>date</th>
+      <th>lecture topic</th>
+      <th>reading</th>
+      <th>lab/discussion</th>
+      <th>homework</th>
+      <th>project</th>
+    </tr>
+  </thead>
+  <tr>
+    <td rowspan="4">1</td>
+    <td>Mon Jun 23</td>
+    <td>
+      <a href="https://docs.google.com/presentation/d/1EKUrf6rSg9fWbinlg90HLq3_c7jddoCTmg9_TARCdoA/edit?usp=sharinghttps://docs.google.com/presentation/d/1EKUrf6rSg9fWbinlg90HLq3_c7jddoCTmg9_TARCdoA/edit?usp=sharing" target="_blank">Introduction to CS61A and Python</a>
+      (<a href="./lecture/00.py" target="_blank">00.py</a>)</td>
+    <td><a href="http://composingprograms.appspot.com/pages/11-getting-started.html" target="_blank">1.1</a></td>
+    <td><a href="./lab/lab00/lab00.html" target="_blank"> Lab 0: Intro to Unix/61A</a></td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Tue Jun 24</td>
+    <td> 
+      <a href="https://docs.google.com/presentation/d/1FawPUGRd_0nR_bN5Ql3RQ4ziDC8mivXJv4j4V6AVI_U/edit?usp=sharing" target="_blank">Python Constructs, Functions, and Evaluation</a> </td>
+  <td><a href="http://composingprograms.appspot.com/pages/12-elements-of-programming.html" target="_blank">1.2</a>
+  <br><a href="http://composingprograms.appspot.com/pages/15-control.html" target="_blank">1.5</a></td>
+    <td> <a href="./discussion/discussion01/discussion01.pdf" target="_blank"> Discussion 1</a> (<a href="./discussion/discussion01/discussion01_sol.pdf" target="_blank"> Solutions </a>) </td>
+    <td><a href="./hw/hw1/hw1.html" target="_blank"> Homework 1</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Wed Jun 25</td>
+    <td><a href="https://docs.google.com/presentation/d/1_dIBaGaNOITGdTfbcUgSpK5ZOazdfHjuIYsge-Ir_Js/edit?usp=sharing" target="_blank">Functions, Side Effects, and Scope</a>
+        (<a href="./lecture/02.py" target="_blank">02.py</a>)</td>
+    <td><a href="http://composingprograms.appspot.com/pages/13-defining-new-functions.html" target="_blank">1.3</a>
+        <br><a href="http://composingprograms.appspot.com/pages/14-designing-functions.html" target="_blank">1.4</a></td>
+    <td><a href="./lab/lab01/lab01.html" target="_blank">Lab 1: Control Flow</a></td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Thu Jun 26</td>
+    <td><a href="https://docs.google.com/a/berkeley.edu/presentation/d/1Cp8fXXSomIAyUE66nqHvCqx2TY0sah1h8IXX8HYEz90/edit?usp=sharing" target="_blank">Higher Order Functions and Environment Diagrams</a>
+       (<a href="http://ocf.berkeley.edu/~shidi/cs61a/guerrilla/env.txt" target="_blank">Rules</a>)</td>
+   <td> <a href="http://composingprograms.appspot.com/pages/16-higher-order-functions.html" target="_blank">1.6</a>
+   <br><a href="http://composingprograms.appspot.com/pages/22-data-abstraction.html#the-properties-of-data" target="_blank">2.2.4</a>
+   <br><a href="http://composingprograms.appspot.com/pages/23-sequences.html#linked-lists" target="_blank">2.3.7</a></td>
+    <td><a href="./discussion/discussion02/discussion02.pdf" target="_blank">Discussion 2</a>
+        (<a href="./discussion/discussion02/discussion02_sol.pdf" target="_blank">Solutions</a>)</td>
+    <td>  <a href="./hw/hw2/hw2.html" target="_blank">Homework 2</a></td>
+    <td>  <a href="./proj/hog/hog.html" target="_blank">Project 1: Hog</a><br>(due Jul 02) </td>
+  </tr>
+  <tr>
+    <td rowspan="4">2</td>
+    <td>Mon Jun 30</td>
+    <td><a href="https://docs.google.com/a/berkeley.edu/presentation/d/1qqgY3wk5r0KFnVTjsP8R9dNNaXisGzljXwAaSza1948/edit?usp=sharing" target="_blank">Recursion and Linked Lists</a> (<a href="./lecture/04.py" target="_blank">04.py</a>)</td>
+    <td>
+        <a href="http://composingprograms.appspot.com/pages/17-recursive-fucntions.html" target="_blank">1.7</a>
+    <br><a href="http://composingprograms.appspot.com/pages/17-recursive-functions.html#the-anatomy-of-recursive-functions" target="_blank">1.7.1</a>
+    <br><a href="http://composingprograms.appspot.com/pages/17-recursive-functions.html#printing-in-recursive-functions" target="_blank">1.7.3</a></td>
+    <td><a href="./lab/lab02/lab02.html" target="_blank">Lab 2: Higher Order Functions<br>and Environment Diagrams</a></td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Tue Jul 01</td>
+    <td> <a href="https://docs.google.com/a/berkeley.edu/presentation/d/1LeaIj_9ONiY-XHd_DGaXxY6XjuYPk1tFV1edmFe6mpE/edit?usp=sharing" target="_blank">Recursion and Tree Recursion</a>
+        (<a href="./lecture/knapsack.py" target="_blank">knapsack.py</a>)</td>
+    <td><a href="http://composingprograms.appspot.com/pages/17-recursive-functions.html#tree-recursion" target="_blank">1.7.4</a>
+    <br><a href="http://composingprograms.appspot.com/pages/17-recursive-functions.html#example-partitions" target="_blank">1.7.5</a></td>
+ </td>
+ <td><a href="./discussion/discussion03/discussion03.pdf" target="_blank">Discussion 3</a>
+ (<a href="./discussion/discussion03/discussion03_sol.pdf" target="_blank">Solutions</a>)</td>
+    <td> <a href="./hw/hw3/hw3.html" target="_blank"> Homework 3</a> </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Wed Jul 02</td>
+    <td> <a href="https://docs.google.com/a/berkeley.edu/presentation/d/1W2fjiGOsX_U8wjFa-CZGdApEipHNw4HrNjX4O0_MkxI/edit?usp=sharing" target="_blank">Data and Sequences</a>
+        (<a href="./lecture/06.py" target="_blank">06.py</a>) </td>
+    <td> <p> <a href="http://composingprograms.appspot.com/pages/21-introduction.html" target="_blank">2.1</a><br></p><p> <a href="http://composingprograms.appspot.com/pages/23-sequences.html" target="_blank">2.3</a><br></p> </td>
+    <td> <a href="./lab/lab03/lab03.html" target="_blank">Lab 3: Recursion</a> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Thu Jul 03</td>
+    <td><a href="https://docs.google.com/a/berkeley.edu/presentation/d/1mrlLw_qo9YM9lD3xWpQfNtQMl8BFSbSgg9dRGiZLMCI/edit?usp=sharing" target="_blank">Data Abstraction</a>
+    (<a href="./lecture/elephants.py" target="_blank">elephants.py</a>)</td>
+    <td> <p> <a href="http://composingprograms.appspot.com/pages/22-data-abstraction.html" target="_blank">2.2</a><br></p> </td>
+    <td><a href="./discussion/discussion04/discussion04.pdf" target="_blank">Discussion 4</a>
+       (<a href="./discussion/discussion04/discussion04_sol.pdf" target="_blank">Solutions</a>)</td>
+    <td>  </td>
+    <td><a href="./proj/trends/trends.html" target="_blank">Project 2: Trends</a><br>(due Jul 13) </td>
+  </tr>
+  <tr>
+    <td rowspan="4">3</td>
+    <td>Mon Jul 07</td>
+    <td> <a href="https://docs.google.com/a/berkeley.edu/presentation/d/1tjE-k_E9xtLWg5tnDJp7e7KxD1Gc22xDKoXIkRHs6VI/edit?usp=sharing" target="_blank">Hierarchical Data Structures: Deep Lists, Trees</a>
+    (<a href="./lecture/08.py" target="_blank">08.py</a>) </td>
+    <td> <p> <a href="http://composingprograms.appspot.com/pages/23-sequences.html#trees" target="_blank">2.3.4</a><br></p> </td>
+    <td><a href="./lab/lab04/lab04.html" target="_blank">Lab 4</a></td>
+    <td><a href="./hw/hw4/hw4.html" target="_blank">Homework 4</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Tue Jul 08</td>
+    <td><a href="https://docs.google.com/presentation/d/1OwJ6AwxyXrsqCd1yatvTLKp7fciAwwq3tw3cAieCesw/edit?usp=sharing" target="_blank">Orders of Growth and Function Runtime</a>
+    (<a href="./lecture/09.py" target="_blank">09.py</a>)</td>
+    <td><a href="http://composingprograms.appspot.com/pages/28-efficiency.html" target="_blank">2.8</a></td>
+    <td> <p> Discussion 5</p><p> </p> </td>
+    <td>  </td>
+    <td> <a href="./proj/hog_contest/hog_contest.html">Hog Contest</a><br>(due Jul 15) </td>
+  </tr>
+  <tr>
+    <td>Wed Jul 09</td>
+    <td> Newton&#39;s Method </td>
+    <td> <p> <a href="http://composingprograms.appspot.com/pages/16-higher-order-functions.html#example-newton-s-method" target="_blank">1.6.5</a><br></p> </td>
+    <td> <p> Lab 5</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Thu Jul 10</td>
+    <td> Exam 1 Review and The Halting Problem
+    <br><strong>Exam 1 - Jul 10, 7pm - 9pm</strong></td>
+    <td>  </td>
+    <td> <p> Discussion 6</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td rowspan="4">4</td>
+    <td>Mon Jul 14</td>
+    <td> Mutability, Environment Diagrams Revisted, Objects </td>
+    <td> <p> <a href="http://composingprograms.appspot.com/pages/24-mutable-data.html" target="_blank">2.4</a><br></p> </td>
+    <td> <p> Lab 6</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Tue Jul 15</td>
+    <td> Functions on Mutable Data Structures </td>
+    <td>  </td>
+    <td> <p> Discussion 7</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Wed Jul 16</td>
+    <td> Object Oriented Programming </td>
+    <td> <p> <a href="http://composingprograms.appspot.com/pages/25-object-oriented-programming.html" target="_blank">2.5</a><br></p> </td>
+    <td> <p> Lab 7</p> </td>
+    <td>  </td>
+    <td> Project 3<br> (due Jul 27) </td>
+  </tr>
+  <tr>
+    <td>Thu Jul 17</td>
+    <td> Inheritance and Interfaces </td>
+    <td> <p> <a href="http://composingprograms.appspot.com/pages/25-object-oriented-programming.html" target="_blank">2.5</a><br></p> </td>
+    <td> <p> Discussion 8</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td rowspan="4">5</td>
+    <td>Mon Jul 21</td>
+    <td> Iterators and Generators </td>
+    <td>  </td>
+    <td> <p> Lab 8</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Tue Jul 22</td>
+    <td> Generic Functions </td>
+    <td>  </td>
+    <td> <p> Discussion 9</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Wed Jul 23</td>
+    <td> Recursive Objects Revisted </td>
+    <td>  </td>
+    <td> <p> Lab 9</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Thu Jul 24</td>
+    <td> A Taste of Things to Come: Calculator </td>
+    <td>  </td>
+    <td> <p> Discussion 10</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td rowspan="4">6</td>
+    <td>Mon Jul 28</td>
+    <td> Interpreters </td>
+    <td>  </td>
+    <td> <p> Lab 10</p> </td>
+    <td>  </td>
+    <td> Project 4<br> (due Aug 10) </td>
+  </tr>
+  <tr>
+    <td>Tue Jul 29</td>
+    <td> Scheme and Functional Programming </td>
+    <td>  </td>
+    <td> <p> Discussion 11</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Wed Jul 30</td>
+    <td> Programming in Scheme </td>
+    <td>  </td>
+    <td> <p> Lab 11</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Thu Jul 31</td>
+    <td> Exam 2 Review<br>
+        <strong>Exam 2 - Jul 31, 7pm - 9pm</strong> </td>
+    <td>  </td>
+    <td> <p> Discussion 12</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td rowspan="4">7</td>
+    <td>Mon Aug 04</td>
+    <td> Tail Recursion </td>
+    <td>  </td>
+    <td> <p> Lab 12</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Tue Aug 05</td>
+    <td> Streams </td>
+    <td>  </td>
+    <td> <p> Discussion 13</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Wed Aug 06</td>
+    <td> Logic Programming </td>
+    <td>  </td>
+    <td> <p> Lab 13</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Thu Aug 07</td>
+    <td> Unification </td>
+    <td>  </td>
+    <td> <p> Discussion 14</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td rowspan="4">8</td>
+    <td>Mon Aug 11</td>
+    <td> Concurrency </td>
+    <td>  </td>
+    <td> <p> Lab 14</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Tue Aug 12</td>
+    <td> MapReduce </td>
+    <td>  </td>
+    <td> <p> Discussion 15</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Wed Aug 13</td>
+    <td> Machine Learning </td>
+    <td>  </td>
+    <td> <p> Lab 15</p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Thu Aug 14</td>
+    <td> Conclusion
+    <br><strong>Final -  Aug 14, 5pm - 8pm</strong> </td>
+    <td>  </td>
+    <td> <p> Discussion 16</p><p> </p> </td>
+    <td>  </td>
+    <td>  </td>
+  </tr>
+</table>
+
+
+<a id="calendar"></a>
+
+<header id="top">
+  <h1>CS 61A</h1>
+  <h2>Weekly Schedule
+      <span>summer 2014</span></h2>
+</header>
+
+
+<iframe src="http://www.google.com/calendar/embed?src=berkeley.edu_6lpkregndfaksdvafjn3g6h694%40group.calendar.google.com&amp;ctz=America/Los_Angeles&amp;mode=week" style="border: 0" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
+
+
+</main>
+
+<footer>
+<p id="glider">
+<a href='http://www.catb.org/~esr/faqs/hacker-howto.html'>
+<img src='http://www.catb.org/hacker-emblem/glider.png' alt='hacker emblem'>
+</a></p>
+</footer>
+
+</body>
+</html>
