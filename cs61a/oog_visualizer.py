@@ -8,8 +8,12 @@ def oog_visualizer(func):
 
     Now when you call the overwritten original function, you should see how many
     recursive calls that function call will make with your specific input.
-
-    >>> spam_visualizer = oop_visualizer(spam)
+    >>> def spam(n):
+    ...     for i in range(n):
+    ...         for j in range(i):
+    ...             return spam(n-1)
+    ...
+    >>> spam_visualizer = oog_visualizer(spam)
     >>> spam_counter = spam_visualizer()
     >>> spam = spam_counter
     >>> spam(100)
