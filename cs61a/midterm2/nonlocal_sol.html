@@ -1701,12 +1701,53 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ol>
-<li><em>Summarize</em> in your own words what the <code>nonlocal</code> keyword does, and what problem <code>nonlocal</code> tries to solve. Modify this definition accordingly as you get more practice down in the next few sections.</li>
-<li>How does <code>nonlocal</code> relate to the general discussion of object mutation? Compare and contrast what a programmer tries to do in <code>nonlocal</code> versus in object mutation</li>
-<li>Does <code>nonlocal</code> work on names in the global frame? Why/why not?</li>
-<li>Give the simplest example you can that uses <code>nonlocal</code> correctly.</li>
-<li>Does <code>nonlocal</code> treat parameter names differently from regular names?</li>
-<li>Describe explicitly the lookup procedure <code>nonlocal</code> does when the keyword is encountered.</li>
+<li><p><em>Summarize</em> in your own words what the <code>nonlocal</code> keyword does, and what problem <code>nonlocal</code> tries to solve. Modify this definition accordingly as you get more practice down in the next few sections.</p>
+<p> <code>nonlocal</code> allows names to refer to those in parent frames instead of the current local frame, 
+ which can be useful when one wants to keep state (remember that the local frame disappears once the
+ function is returned) but does not want it in the global frame. </p>
+<p> Remember that for assignment, if Python does not see the name in the current frame, it will try to
+ add that name to the current frame. Therefore, assignment without <code>nonlocal</code> will not modify the
+ one in the parent frames the user wants to modify.</p>
+<p> Think about make_withdraw: you want to keep a user&#39;s balance private, right? You do not want anyone
+ with access to the global frame to modify the balance. Simple examples like these will help with 
+ remembering the purpose of <code>nonlocal</code>.</p>
+<p> This can be useful when you have an operation that has to keep state, but designing a full class
+ for it seems like overkill. For instance, the <code>animate_leaf</code> function in <code>ants_gui.py</code> uses nonlocal
+ to keep track of where to start drawing the leaf. The starting point changes for the duration of
+ the operation because the drawing is meant to move.</p>
+<p> Thus, to reiterate, <code>nonlocal</code> allows users to declare names not in the current frame but in the
+ parent frames (excluding global) such that they can be re-assigned without adding them to the
+ current frame.</p>
+</li>
+<li><p>How does <code>nonlocal</code> relate to the general discussion of object mutation? Compare and contrast what a programmer tries to do in <code>nonlocal</code> versus in object mutation.</p>
+<p> One can think of <code>nonlocal</code> as modifying bindings (assignments) in parent frames. Current Python
+ syntax without <code>nonlocal</code> does not allow for this modification, as discussed above. 
+ Meanwhile, objects are free to be mutated. With this syntax extension, users can now mutate both
+ things: assignments and the objects themselves. </p>
+</li>
+<li><p>Does <code>nonlocal</code> work on names in the global frame? Why/why not?</p>
+<p> No, because that would defeat the purpose of choosing a name from a parent frame such that the
+ name is enclosed, unable to be modified in the global frame. Recall the <code>make_withdraw</code> example.
+ There is, in fact, the <code>global</code> keyword for that purpose.</p>
+</li>
+<li><p>Give the simplest example you can that uses <code>nonlocal</code> correctly.</p>
+<p> The simplest example is an operation that keeps track of a number, so that one can increment it.
+ `def make_counter():</p>
+<pre><code> count = 0
+ def counter():
+     nonlocal count
+     count += 1
+     return count
+ return counter
+</code></pre></li>
+<li><p>Does <code>nonlocal</code> treat parameter names differently from regular names?</p>
+<p> Nope. An environment diagram clearly shows that there is really no difference in names.</p>
+</li>
+<li><p>Describe explicitly the lookup procedure <code>nonlocal</code> does when the keyword is encountered.</p>
+<p> <code>nonlocal</code> starts looking in the most immediate parent frame for the declared name. It would not
+ make sense for <code>nonlocal</code> to start in the current frame. If not there, <code>nonlocal</code> will keep going
+ up a parent frame and stop at the last parent frame before the global frame.</p>
+</li>
 </ol>
 </div>
 </div>
@@ -1734,6 +1775,208 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[1]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">nonlocal</span> <span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+&lt;input&gt;:2: SyntaxWarning: name &apos;x&apos; is assigned to before nonlocal declaration
+&lt;input&gt;:2: SyntaxWarning: name &apos;x&apos; is assigned to before nonlocal declaration
+&lt;input&gt;:2: SyntaxWarning: name &apos;x&apos; is assigned to before nonlocal declaration
+
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-1-a1fa932b5897&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">2</span>
+<span class="ansired">    nonlocal x</span>
+<span class="ansired">SyntaxError</span><span class="ansired">:</span> nonlocal declaration not allowed at module level
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ignore the SyntaxWarnings (even IPython knows that this code is a bad idea). Using <code>nonlocal</code> in the global frame truly misses the purpose of <code>nonlocal</code> which is to modify names in an <em>enclosing</em> scope: parent frames that are not global so that those names can be accessed only from within the function.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[3]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">counter</span><span class="p">():</span>
+    <span class="n">nonlocal</span> <span class="n">count</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+<span class="n">counter</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-3-5cb163cab6da&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">3</span>
+<span class="ansired">    nonlocal count</span>
+<span class="ansired">SyntaxError</span><span class="ansired">:</span> no binding for nonlocal &apos;count&apos; found
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>count</code> is not nonlocal: <code>count</code> is global. Again, think back to the purpose of having <code>nonlocal</code> in the first place, and you can see why Python does not let you use <code>nonlocal</code> here to modify a global variable.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[5]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">nonlocal</span> <span class="n">x</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-5-637b2d3beeff&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">2</span>
+<span class="ansired">    nonlocal x</span>
+<span class="ansired">SyntaxError</span><span class="ansired">:</span> name &apos;x&apos; is parameter and nonlocal
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, the parameter has to exist in the local frame, so it cannot possibly be nonlocal. (As a consequence of the syntax, nonlocal names <em>cannot</em> exist in the current frame. This is where the UnboundLocalError comes from). </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[7]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">make_counter</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">counter</span><span class="p">():</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">counter</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">make_counter</span><span class="p">()</span>
+<span class="n">a</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">UnboundLocalError</span>                         Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-7-da4d0b377715&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      6</span>     <span class="ansigreen">return</span> counter<span class="ansiblue"></span>
+<span class="ansigreen">      7</span> a <span class="ansiblue">=</span> make_counter<span class="ansiblue">(</span><span class="ansiblue">)</span><span class="ansiblue"></span>
+<span class="ansigreen">----&gt; 8</span><span class="ansired"> </span>a<span class="ansiblue">(</span><span class="ansiblue">)</span><span class="ansiblue"></span>
+
+<span class="ansigreen">&lt;ipython-input-7-da4d0b377715&gt;</span> in <span class="ansicyan">counter</span><span class="ansiblue">()</span>
+<span class="ansigreen">      2</span>     count <span class="ansiblue">=</span> <span class="ansicyan">0</span><span class="ansiblue"></span>
+<span class="ansigreen">      3</span>     <span class="ansigreen">def</span> counter<span class="ansiblue">(</span><span class="ansiblue">)</span><span class="ansiblue">:</span><span class="ansiblue"></span>
+<span class="ansigreen">----&gt; 4</span><span class="ansired">         </span>count <span class="ansiblue">+=</span> <span class="ansicyan">1</span><span class="ansiblue"></span>
+<span class="ansigreen">      5</span>         <span class="ansigreen">return</span> count<span class="ansiblue"></span>
+<span class="ansigreen">      6</span>     <span class="ansigreen">return</span> counter<span class="ansiblue"></span>
+
+<span class="ansired">UnboundLocalError</span>: local variable &apos;count&apos; referenced before assignment</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So you think about recreating an <code>UnboundLocalError</code> and here it is. Without <code>nonlocal</code>, Python assumes that you are creating a new name <code>count</code> in the current frame. You cannot refer to the same name nonlocally and locally, or else it causes major confusion with Python&#39;s other built-in behavior. Also, Python cannot magically read your intentions, so if you intend to refer to a nonlocal name, you should declare it.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1750,7 +1993,6 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Once you are familiar with the motivation behind nonlocal, you can generate your own environment diagram questions! As always, you can check your answers on <a href="pythontutor.com/visualize.html">PythonTutor</a>, but make sure that you have it on Python 3.</p>
-<p><strong>For each problem, you should write down what we are trying to keep track with the nonlocal name.</strong></p>
 </div>
 </div>
 </div>
@@ -1779,6 +2021,15 @@ In&nbsp;[]:
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For <code>nonlocal</code> problems, it helps to write down what you want to keep track. In this case, we want to keep track of the <code>quantity</code> -- the number of tickets -- and the inner function decrements from the number of tickets each time.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
@@ -1804,6 +2055,15 @@ In&nbsp;[]:
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, we are keeping track of which list we append to using <code>curr_lst</code> and <code>nonlocal</code> gives us the ability to reassign this name so that we can alternate which list to append to each time.</p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1831,6 +2091,15 @@ In&nbsp;[]:
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are keeping track of many things here: the arguments passed in that we will rotate, and the <code>start_letter</code> variable, which tells us which letter we are on. Notice that if you do not assign to a nonlocal name, you do not have to declare the name to look it up. This can be seen with the <code>remote</code> name.</p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1883,6 +2152,15 @@ In&nbsp;[]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>In this problem, we are keeping track of which <code>task</code> function the operator is currently prepared to do. The inner function that is returned is a dispatch function that will allow us to change the function assigned to <code>task</code>. Note how this is getting more and more similar to classes and instances. At some point, it may be a better idea to use OOP instead of <code>nonlocal</code>: <code>nonlocal</code> is usually a quick way to allow operations (functions) to store state but it is not the most complete solution.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Afterword">Afterword<a class="anchor-link" href="#Afterword">&#182;</a></h2>
 </div>
 </div>
@@ -1893,7 +2171,7 @@ In&nbsp;[]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For those of you who like to read about how nonlocal came to be, <a href="http://legacy.python.org/dev/peps/pep-3104/">PEP 3014</a> describes completely the discussion Python developers have had over nonlocal and the rationale behind this new construct.</p>
+<p>For those of you who like to read about how nonlocal came to be, <a href="http://legacy.python.org/dev/peps/pep-3104/">PEP 3014</a> describes completely the discussion Python developers have had over nonlocal and the rationale behind this new construct. In general, you can look for documentation using the command <code>pydoc3 &lt;built-in word&gt;</code> in the command line. e.g. <code>pydoc3 nonlocal</code> or <code>pydoc3 global</code></p>
 </div>
 </div>
 </div>
