@@ -1680,7 +1680,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Discussion-9-7/22-Warmups-Solutions">Discussion 9 7/22 Warmups Solutions<a class="anchor-link" href="#Discussion-9-7/22-Warmups-Solutions">&#182;</a></h1>
+<h1 id="Nonlocal-Practice-Problems">Nonlocal Practice Problems<a class="anchor-link" href="#Nonlocal-Practice-Problems">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -1690,7 +1690,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-Would-Python-Print?">What Would Python Print?<a class="anchor-link" href="#What-Would-Python-Print?">&#182;</a></h2>
+<h2 id="Basic-Concepts">Basic Concepts<a class="anchor-link" href="#Basic-Concepts">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1700,494 +1700,106 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Try to explain everything using environment diagrams. You will not be tested on OOP environment diagrams, but they are important to help you visualize what&#39;s going on. You should document the reasoning behind your answers, and then re-adjust your reasoning as you go over your answers with PythonTutor.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[1]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
-<span class="o">...</span>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-<span class="o">...</span>     <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
-<span class="o">...</span>   <span class="k">def</span> <span class="nf">print_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-__main__.A
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As you can see, the class definition will create a class object and then bind that class object to the name A.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[3]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">print_id</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[3]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&lt;bound method A.print_id of &lt;__main__.A object at 0x10383ed68&gt;&gt;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In the first line, we create an empty object of type/class A, invoke <code>A.__init__</code> on that empty object, and then bind the name <code>a</code> to that object.</p>
-<p>In the second line, we look up <code>A.print_id</code> through an instance, which makes <code>a.print_id</code> a bound method. Note that it is not called; it is just looked up and printed by the interpreter.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[4]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">.</span><span class="n">print_id</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[4]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&lt;function __main__.A.print_id&gt;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This time, we look up <code>A.print_id</code>, the function, from the class. This just returns a plain old function with one parameter: <code>self</code>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[5]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">.</span><span class="n">print_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">NameError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-5-1266aa6c50a7&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansired"> </span>A<span class="ansiblue">.</span>print_id<span class="ansiblue">(</span>self<span class="ansiblue">)</span><span class="ansiblue"></span>
-
-<span class="ansired">NameError</span>: name &apos;self&apos; is not defined</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We are in the global frame, and there is no name <code>self</code> in the global frame.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[6]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">.</span><span class="n">print_id</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-6-22a0003808cb&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansired"> </span>A<span class="ansiblue">.</span>print_id<span class="ansiblue">(</span><span class="ansiblue">)</span><span class="ansiblue"></span>
-
-<span class="ansired">TypeError</span>: print_id() missing 1 required positional argument: &apos;self&apos;</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Since the method <code>A.print_id</code> is not bound, one still has to pass in an argument for the <code>self</code> parameter. Not enough arguments here.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[7]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">.</span><span class="n">print_id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-5
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally we pass in an argument for the parameter <code>self</code>. We then print <code>self.id</code>, which is well defined because the object that <code>a</code> refers to has that attribute.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[8]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">print_id</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">print_id</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-8-d1010594b2a4&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">      1</span> a<span class="ansiblue">.</span>print_id <span class="ansiblue">=</span> <span class="ansigreen">lambda</span> self<span class="ansiblue">:</span> print<span class="ansiblue">(</span>self<span class="ansiblue">.</span>id<span class="ansiblue">)</span><span class="ansiblue"></span>
-<span class="ansigreen">----&gt; 2</span><span class="ansired"> </span>a<span class="ansiblue">.</span>print_id<span class="ansiblue">(</span><span class="ansiblue">)</span><span class="ansiblue"></span>
-
-<span class="ansired">TypeError</span>: &lt;lambda&gt;() missing 1 required positional argument: &apos;self&apos;</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The first line does not create a bound method. This function is not from the class. Therefore, there is no automatic binding to <code>self</code>. Thus, the next line will produce that TypeError.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">print_id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-5
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This time, <code>self</code> has an argument, which happens to have an instance attribute. The id will get printed.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[10]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">print_id</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-2
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><code>self</code> also has an argument, although that object is directly created before being passed into the function (remember, evaluate the operator and operands before applying). </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">.</span><span class="n">classy</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">classy</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[11]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-False
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Remember the procedure behind dot notation lookup:</p>
 <ol>
-<li>First, find out which object the name to the left-hand side (LHS) of the dot points to</li>
-<li>Now, look for the name on the RHS of the dot in the object from the LHS and return the name&#39;s value if there.</li>
-<li>If not there, look in the class.</li>
-<li>If not in the class, look up in the parent classes (from inheritance).</li>
-<li>AttributeError</li>
+<li><em>Summarize</em> in your own words what the <code>nonlocal</code> keyword does, and what problem <code>nonlocal</code> tries to solve. Modify this definition accordingly as you get more practice down in the next few sections.</li>
+<li>How does <code>nonlocal</code> relate to the general discussion of object mutation? Compare and contrast what a programmer tries to do in <code>nonlocal</code> versus in object mutation</li>
+<li>Does <code>nonlocal</code> work on names in the global frame? Why/why not?</li>
+<li>Give the simplest example you can that uses <code>nonlocal</code> correctly.</li>
+<li>Does <code>nonlocal</code> treat parameter names differently from regular names?</li>
+<li>Describe explicitly the lookup procedure <code>nonlocal</code> does when the keyword is encountered.</li>
 </ol>
-<p>Here, the instance <code>a</code> itself does not have the name <code>classy</code> but the class does.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Experimentation">Experimentation<a class="anchor-link" href="#Experimentation">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that you have a good understanding of <code>nonlocal</code>, it&#39;s time to understand misconceptions about nonlocal. Try simple examples with <code>nonlocal</code> where the code fails. (If you really can&#39;t think of examples, revisit <a href="http://inst.eecs.berkeley.edu/~cs61a/su14/discussion/discussion07/discussion07.pdf">Discussion 7</a>.) </p>
+<ol>
+<li>What does the error message say? </li>
+<li>Given what you know about the motivation, why do you think Python does not allow what you just did? </li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Environment-Diagrams">Environment Diagrams<a class="anchor-link" href="#Environment-Diagrams">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once you are familiar with the motivation behind nonlocal, you can generate your own environment diagram questions! As always, you can check your answers on <a href="pythontutor.com/visualize.html">PythonTutor</a>, but make sure that you have it on Python 3.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[12]:
+In&nbsp;[]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">classy</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">.</span><span class="n">classy</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">make_draw</span><span class="p">(</span><span class="n">tickets</span><span class="p">):</span>
+    <span class="n">quantity</span> <span class="o">=</span> <span class="n">tickets</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">():</span>
+        <span class="n">nonlocal</span> <span class="n">quantity</span>
+        <span class="n">quantity</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">quantity</span>
+    <span class="k">return</span> <span class="n">draw</span>
+<span class="n">drawing</span> <span class="o">=</span> <span class="n">make_draw</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">drawing</span><span class="p">()</span>
+<span class="n">drawing</span><span class="p">()</span>
+<span class="n">draw</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-False
-</pre>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">mutate_two</span><span class="p">(</span><span class="n">lst1</span><span class="p">,</span> <span class="n">lst2</span><span class="p">):</span>
+    <span class="n">curr_lst</span> <span class="o">=</span> <span class="n">lst1</span>
+    <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">nonlocal</span> <span class="n">curr_lst</span>
+        <span class="n">curr_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">curr_lst</span> <span class="o">=</span> <span class="n">lst2</span> <span class="k">if</span> <span class="n">curr_lst</span> <span class="ow">is</span> <span class="n">lst1</span> <span class="k">else</span> <span class="n">lst1</span>
+    <span class="k">return</span> <span class="n">mutate</span>
+<span class="n">lst1</span><span class="p">,</span> <span class="n">lst2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">mutator</span> <span class="o">=</span> <span class="n">mutate_two</span><span class="p">(</span><span class="n">lst1</span><span class="p">,</span> <span class="n">lst2</span><span class="p">)</span>
+<span class="n">mutator</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">mutator</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">mutator</span><span class="p">(</span><span class="s">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
 
 </div>
-
 </div>
 </div>
 
@@ -2197,40 +1809,43 @@ False
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that changing the instance attribute does not change the class attribute because they are two separate objects. The environment diagram shows this clearly.</p>
+<p>For the following, you will not see anything as elaborate on the exam, but solving this diagram systematically (i.e. by following all the rules) will be great practice. It also introduces you to visualizing dictionaries in environment diagrams.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[13]:
+In&nbsp;[]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">classy</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">bart_operator</span><span class="p">():</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="s">&quot;Berkeley&quot;</span>
+    <span class="k">def</span> <span class="nf">change_loc</span><span class="p">(</span><span class="n">loc</span><span class="p">):</span>
+        <span class="n">nonlocal</span> <span class="n">location</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">loc</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;maintain&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">car</span><span class="p">:</span> <span class="s">&#39;Fixed car!&#39;</span><span class="p">,</span> <span class="s">&#39;move&#39;</span><span class="p">:</span> <span class="n">change_loc</span><span class="p">,</span> \
+             <span class="s">&#39;call&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="s">&#39;? You got it.&#39;</span><span class="p">)}</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="p">[</span><span class="s">&#39;call&#39;</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">work</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="n">nonlocal</span> <span class="n">task</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s">&quot;do&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">task</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">status</span> <span class="o">==</span> <span class="s">&quot;change&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&quot;idk how to do that&quot;</span>
+    <span class="k">return</span> <span class="n">work</span>
+<span class="n">dickson</span> <span class="o">=</span> <span class="n">bart_operator</span><span class="p">()</span>
+<span class="n">dickson</span><span class="p">(</span><span class="s">&quot;do&quot;</span><span class="p">,</span> <span class="s">&quot;Fix wires&quot;</span><span class="p">)</span>
+<span class="n">dickson</span><span class="p">(</span><span class="s">&quot;change&quot;</span><span class="p">,</span> <span class="s">&quot;move&quot;</span><span class="p">)</span>
+<span class="n">dickson</span><span class="p">(</span><span class="s">&quot;do&quot;</span><span class="p">,</span> <span class="s">&quot;Union City&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[13]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-True
-</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -2240,51 +1855,17 @@ True
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This example shows that the instance is examined for the name first before the class.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[14]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">A</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">B</span><span class="o">.</span><span class="n">classy</span>
-</pre></div>
-
+<h2 id="Afterword">Afterword<a class="anchor-link" href="#Afterword">&#182;</a></h2>
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[14]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-False
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since <code>A</code> is just a name in the global frame that points to the actual class object, the assignment can just copy the arrow and bind <code>B</code> to that same arrow. This means we can now access the class object from <code>B</code> as well, hence the same result as `A.classy&#39;</p>
+<p>For those of you who like to read about how nonlocal came to be, <a href="http://legacy.python.org/dev/peps/pep-3104/">PEP 3014</a> describes completely the discussion Python developers have had over nonlocal and the rationale behind this new construct.</p>
 </div>
 </div>
 </div>
