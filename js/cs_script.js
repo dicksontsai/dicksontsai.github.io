@@ -6,6 +6,13 @@ $(document).ready(function() {
     function() {
         $('#email-tag').hide();
     });
+   $('#projects>a').mouseenter(function() {
+        $('#email-submit-tag').show();
+    });
+   $('#projects>a').mouseleave( 
+    function() {
+        $('#email-submit-tag').hide();
+    });
 });
 
 /* Google Analytics */

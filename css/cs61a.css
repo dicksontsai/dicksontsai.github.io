@@ -62,10 +62,10 @@ body {
 }
 #projects {
 	position: absolute;
-	top: 310px;
+	top: 370px;
 }
 #projects a {
-	padding: 21px 200px 21px 57px;
+	padding: 21px 200px 21px 0px;
 }
 #resume {
 	position: absolute;
@@ -93,6 +93,12 @@ body {
 	display: none;
 	position: absolute;
 	top: 310px;
+	background-color: #52B5D8;
+}
+#email-submit-tag {
+	display: none;
+	position: absolute;
+	top: 420px;
 	background-color: #52B5D8;
 }
 
