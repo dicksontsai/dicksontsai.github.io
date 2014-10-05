@@ -144,7 +144,7 @@ body {
 #titleline {
 	font-size: 62pt;
 	padding-right: 5px;
-	color: #3BFB43;
+	color: gold;
 	padding-left: 20px;
 }
 
@@ -169,7 +169,7 @@ body {
 
 
 header {
-	background-image: url("../assets/cs61a_header.jpg");
+	background-image: url("../assets/memorial_stadium.jpg");
 	margin-top: 0px;
 	border-top: 0px;
 	padding-top: 0px;
