@@ -1,4 +1,5 @@
 $(document).ready(function() {   
+  /*
    $('#about>a').mouseenter(function() {
         $('#email-tag').show();
     });
@@ -6,6 +7,7 @@ $(document).ready(function() {
     function() {
         $('#email-tag').hide();
     });
+    */
    $('#projects>a').mouseenter(function() {
         $('#email-submit-tag').show();
     });

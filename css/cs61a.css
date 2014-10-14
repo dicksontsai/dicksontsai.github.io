@@ -58,14 +58,14 @@ body {
 	top: 260px;
 }
 #about a {
-	padding: 21px 200px 21px 50px;
+	padding: 10px 200px 21px 20px;
 }
 #projects {
 	position: absolute;
-	top: 370px;
+	top: 310px;
 }
 #projects a {
-	padding: 21px 200px 21px 0px;
+	padding: 10px 200px 21px 65px;
 }
 #resume {
 	position: absolute;
@@ -86,19 +86,19 @@ body {
 	top: 460px;
 }
 #email a {
-	padding: 21px 200px 21px 70px;
+	padding: 21px 200px 21px 75px;
 }
 
 #email-tag {
 	display: none;
 	position: absolute;
-	top: 310px;
+	top: 370px;
 	background-color: #52B5D8;
 }
 #email-submit-tag {
 	display: none;
 	position: absolute;
-	top: 420px;
+	top: 370px;
 	background-color: #52B5D8;
 }
 
