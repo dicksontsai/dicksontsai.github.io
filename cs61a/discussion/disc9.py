@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-## Discussion 9 Warmups 7/22
+## Discussion 6 Warmups 10/16
 
 ### What Would Python Print?
 
