@@ -1,19 +1,10 @@
 $(document).ready(function() {   
-  /*
    $('#about>a').mouseenter(function() {
         $('#email-tag').show();
     });
    $('#about>a').mouseleave( 
     function() {
         $('#email-tag').hide();
-    });
-    */
-   $('#projects>a').mouseenter(function() {
-        $('#email-submit-tag').show();
-    });
-   $('#projects>a').mouseleave( 
-    function() {
-        $('#email-submit-tag').hide();
     });
 });
 
